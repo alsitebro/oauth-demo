@@ -1,0 +1,32 @@
+﻿@model IEnumerable<AuthorisationServer.Data.Client>
+
+@{
+    ViewBag.Title = "Clients";
+}
+<p>
+    @Html.ActionLink("Register new client", "Register")
+</p>
+@if (Model.Any())
+{
+    <table class="table">
+        <tr>
+            <th colspan="2">
+                App
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("View details", "Details", new { id = item.Id }) | 
+                    @Html.ActionLink("Delete", "Delete", new {id = item.Id})
+                </td>
+            </tr>
+        }
+
+    </table>
+}

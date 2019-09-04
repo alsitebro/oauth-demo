@@ -1,0 +1,38 @@
+﻿@model AuthorisationServer.Models.LoginViewModel
+@{
+    ViewBag.Title = "Sign in";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <div class="form-group">
+            <div class="col-md-10">@Html.ValidationSummary(true)</div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Email, new {@placeholder = "email address", @class = "form-control"})
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.PasswordFor(model => model.Password, new {@placeholder = "password", @class = "form-control"})
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <div class="checkbox">
+                    <label>
+                        @Html.CheckBoxFor(model => model.RememberMe) Remember me?
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="submit" value="Sign in" class="btn btn-primary" />
+                @Html.ActionLink("Register", "Register", null, new {@class = "btn btn-link"})
+            </div>
+        </div>
+    </div>
+}

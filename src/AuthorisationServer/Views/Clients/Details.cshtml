@@ -1,0 +1,53 @@
+﻿@model AuthorisationServer.Data.Client
+
+@{
+    ViewBag.Title = $"Details for {Model.Name} app";
+}
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Secret)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Secret)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RedirectUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RedirectUrl)
+        </dd>
+        
+        <dt>
+            @Html.DisplayNameFor(model => model.Scopes)
+        </dt>
+
+        <dd>
+            @if (Model.Scopes.Any())
+            {
+                <ul class="list-unstyled">
+                    @foreach (var scope in Model.Scopes)
+                    {
+                        <li>@scope</li>
+                    }
+                </ul>
+            }
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Delete", "Delete", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

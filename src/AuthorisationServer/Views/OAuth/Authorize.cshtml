@@ -1,0 +1,42 @@
+﻿@model AuthorisationServer.Models.ClientAuthorisationModel
+@{
+    ViewBag.Title = $"Authorize {Model.Name} app";
+    <text>
+        <script>
+         var clientIsAuthorised = "@ViewBag.UserAlreadyAuthorisedClient".toLocaleLowerCase() === "true";
+        </script>
+    </text>
+}
+<form action="@Request.Url.PathAndQuery" method="post" id="authorizeclient" style="display:none">
+    @Html.AntiForgeryToken()
+    <input id="Id" name="Id" type="hidden" value="@Model.Id">
+    <input id="RedirectUrl" name="RedirectUrl" type="hidden" value="@Model.RedirectUrl">
+    <input id="Name" name="Name" type="hidden" value="@Model.Name" />
+    @if (Request.IsAuthenticated)
+    {
+        <p>Hello @User.Identity.Name</p>
+    }
+    <p>@Model.Name wants to do the following on your behalf:</p>
+    <ul>
+        @foreach (var scope in Model.Scopes)
+        {
+            <li>@scope</li>
+        }
+    </ul>
+    <input type="submit" id="btnGrant" name="Grant" value="Authorise">
+    <input type="submit" id="btnLogout" name="Logout" value="Log out">
+</form>
+@{
+    <text>
+        <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+        <script>
+            $(document).ready((e) => {
+                if (clientIsAuthorised) {
+                    $("#btnGrant").click();
+                } else {
+                    $("#authorizeclient").css("display", "inline-block");
+                }
+            });
+        </script>
+    </text>
+}
