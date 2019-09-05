@@ -1,7 +1,7 @@
 # oauth-demo
 ## This demo was used in my talk on OAuth 2.0 and OpenIDConnect at the Peterborough .NET Meetup on 3rd September 2019.
 
-### Requires a running MongoDB server listening on mongo://localhost:27017
+### Requires a running MongoDB server listening on mongodb://127.0.0.1:27017
 
 ##### Caveat: This code should never be used in production
 
