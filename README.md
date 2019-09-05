@@ -1,6 +1,9 @@
 # oauth-demo
-## This demo was used in my talk on OAuth 2.0 and OpenIDConnect at the Peterborough .NET Meetup.
-### Requires a running MongoDB server listening on port 27017
+## This demo was used in my talk on OAuth 2.0 and OpenIDConnect at the Peterborough .NET Meetup on 3rd September 2019.
+
+### Requires a running MongoDB server listening on mongo://localhost:27017
+
+##### Caveat: This code should never be used in production
 
 #### Resources
 * [Internet Engineering Task Force (IETF) RFC: 6749](https://tools.ietf.org/html/rfc6749)
